@@ -8,7 +8,7 @@ model = joblib.load("model.pkl")
 
 @app.route("/")
 def home():
-    return "Welcome to Iris Flower Prediction API"
+    return "Welcome to Madhu's Iris Flower Prediction API"
 
 @app.route("/health")
 def health():
@@ -39,5 +39,10 @@ def predict():
         "flower_name": flower[int(prediction[0])]
     })
 
+"""if __name__ == "__main__":
+    app.run(debug=True)"""
+import os
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
